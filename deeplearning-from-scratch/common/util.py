@@ -64,7 +64,7 @@ def im2col(input_data, filter_h, filter_w, stride=1, pad=0):
             x_max = x + stride*out_w
             col[:, :, y, x, :, :] = img[:, :, y:y_max:stride, x:x_max:stride]
 
-    col = col.transpose(0, 4, 5, 1, 2, 3).reshape(N*out_h*out_w, -1) #　列为C*filter_h*filter_w
+    col = col.transpose(0, 4, 5, 1, 2, 3).reshape(N*out_h*out_w, -1) #　形状为[N*out_h*out_w,C*filter_h*filter_w],其中列为滤波器元素个数的总和（滤波器通道数*滤波器高*滤波器宽）
     return col
 
 
